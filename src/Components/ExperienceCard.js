@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ExperienceCard extends Component {
   state = {
     listed: false
@@ -84,8 +85,8 @@ class ExperienceCard extends Component {
               <div className="exp-info-wrap">
                 {city ? (
                   <React.Fragment>
-                    <p id="exp-city">{city}</p>
-                    <p id="exp-description">{this.props.description}</p>
+                    <p id="exp-city" style={{color: 'black', fontSize: '15px'}}>{city}</p>
+                    <p id="exp-description" style={{fontFamily: 'Charm', fontSize: '15px'}}>{this.props.description}</p>
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
@@ -109,7 +110,7 @@ class ExperienceCard extends Component {
                     ) : (
                       <div className="discount" />
                     )}
-                    <div className="ratings-section">
+                    <div className="ratings-section ">
                       {stars ? (
                         <div className="stars">
                           <p id="stars-p">
@@ -127,17 +128,18 @@ class ExperienceCard extends Component {
                             borderRadius: '50%',
                             background:
                               'linear-gradient(340deg, #ffbb58, #f5c684)',
-                            paddingTop: '3px'
+                            paddingTop: '3px',
+                            
                           }}
                         >
-                          <p id="stars-p">
+                          <p id="stars-p" >
                             <span> &#9733;</span>
                           </p>
                         </div>
                       )}
                       {ratings ? (
                         ratings === 1 ? (
-                          <p id="ratings">{`(${this.props.ratings} Rating)`}</p>
+                          <p id="ratings" >{`(${this.props.ratings} Rating)`}</p>
                         ) : (
                           <p id="ratings">{`(${
                             this.props.ratings
@@ -148,7 +150,7 @@ class ExperienceCard extends Component {
                       )}
                     </div>
                   </div>
-                  <div className="price">
+                  <div className="price" style={{fontFamily: 'charm'}}>
                     <p>from</p>
                     {lastPrice && this.props.city === 'DUBAI' ? (
                       <p id="last-price">{`${this.props.currency} ${

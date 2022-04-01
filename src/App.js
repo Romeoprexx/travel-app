@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Routes from './CityRoutes';
-import logo from './Components/Images/headout.png';
+import logo from './Components/Images/logo3.png';
+
 
 class App extends Component {
   state = { width: 0, height: 0 };
@@ -23,9 +24,9 @@ class App extends Component {
     if (mobileTablet) {
       return (
         <div className="mobile-tablet">
-          <img src={logo} alt="Headout" />
-          <p>
-            Currently, we're not supporting Mobile & Tablets{' '}
+          <img src={logo} alt="logo" />
+          <p style={{color: 'crimson', fontWeight: '600'}}>
+            Sorry we are currently not supporting Mobile devices & Tablets{''}
             <span role="img" aria-label="Warn">
               🙏
             </span>

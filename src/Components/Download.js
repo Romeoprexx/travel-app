@@ -7,12 +7,12 @@ import Appstoreimg from './Images/apple-store.png';
 
 const Download = () => (
   <div className="download-wrap">
-    <div className="download-wrapper">
+    <div className="download-wrapper" id='download'>
       <div className="iphone">
         <img src={Iphoneimg} alt="Iphone :P" />
       </div>
       <div className="download-section">
-        <h2>Headout on the go</h2>
+        <h2>The world on your tap!</h2>
         <hr
           style={{
             backgroundColor: '#ffbb58',
@@ -25,8 +25,8 @@ const Download = () => (
         />
         <div>
           <p id="downloads-info">
-            Download our mobile app for easier & faster checkout. <br />
-            We can send you the download link to get started right away!
+            Download our mobile app for easier & faster deals. <br />
+            Click on your store to get started right away!
           </p>
         </div>
         <div className="download-links">

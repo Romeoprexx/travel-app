@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
+import { Link as Link1 } from 'react-router-dom';
 import Select from 'react-select';
 import Background from './Background';
-import Logo from '../Images/headout.png';
+import Logo from '../Images/logo3.png';
 import MobileApp from '../Images/mobile-app.gif';
 import '../Styles/Header.css';
 
@@ -52,7 +53,7 @@ class Header extends Component {
             />
             <i className="fas fa-search" />
           </div>
-          <button id="go">Let's Go</button>
+          <button id="go">Explore</button>
         </div>
       </React.Fragment>
     );
@@ -64,7 +65,7 @@ export class HeaderNav extends Component {
     navigationData: [
       {
         id: 1,
-        name: 'Headout Picks'
+        name: 'Hotels'
       },
       {
         id: 2,
@@ -72,15 +73,15 @@ export class HeaderNav extends Component {
       },
       {
         id: 3,
-        name: 'Abu Dhabi City Tours'
+        name: 'Tours'
       },
       {
         id: 4,
-        name: 'Amsterdam Attractions'
+        name: 'Attractions'
       },
       {
         id: 5,
-        name: 'Burj Khalifa'
+        name: 'Restaurants'
       }
     ]
   };
@@ -94,9 +95,18 @@ export class HeaderNav extends Component {
               <div className="first-line">
                 <Link to={{ pathname: `/` }}>
                   <div>
-                    <img id="logo" src={Logo} alt="Headout" />
+                       <img id='logo' src={Logo} alt='logo' />
                   </div>
                 </Link>
+                <div className='navLink'>
+                  <Link1 className='linkto unlink' to={{pathname: `/`}}>Home</Link1>
+                  <Link className='linkto' to='media' smooth={true} duration={1000}>Reviews</Link>
+                  <Link className='linkto' to='topcities' smooth={true} duration={1000}>Top Destinations</Link>
+                  <Link className='linkto' to='picks' smooth={true} duration={1000}>Best Sellers</Link>
+                  <Link className='linkto' to='download' smooth={true} duration={1000}>Get App</Link>
+                </div>
+
+                
                 <div className="select-city">
                   <Searchbar
                     style={smallSearchbar}
@@ -144,29 +154,24 @@ export class HeaderNav extends Component {
               </div>
             </div>
             <div className="header-right">
-              <a
-                href="https://lastnamearya.github.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
-              >
+              
                 <div className="sign-in">
                   {/* <i className="fas fa-user-circle sign-in-user" /> */}
                   <div className="lastnamearya-img">
                     <img
                       src="https://secure.gravatar.com/avatar/413b990ccd2cf5ba69d609fdba4f0302"
-                      alt="lastnamearya"
+                      alt="login"
                     />
                   </div>
-                  <p style={{ color: '#ec1943', marginLeft: '5px' }}>
-                    lastnamearya
+                  <p style={{ color: 'hsl(317 100% 54%)', marginLeft: '5px' }}>
+                    Welcome
                     <span className="arrow-down">
                       {' '}
                       <i className="fas fa-angle-down" />
                     </span>
                   </p>
                 </div>
-              </a>
+              
               <Link
                 to={{ pathname: `/app` }}
                 style={{
@@ -201,7 +206,12 @@ const options = [
   { value: 'naples', label: 'Naples' },
   { value: 'budapest', label: 'Budapest' },
   { value: 'edinburg', label: 'Edinburg' },
-  { value: 'florence', label: 'Florence' }
+  { value: 'florence', label: 'Florence' },
+  { value: 'Sydney', label: 'Sydney' },
+  { value: 'Toronto', label: 'Toronto' },
+  { value: 'Bermuda', label: 'Bermuda' },
+  { value: 'Manila', label: 'Manila' },
+  { value: 'Berlin', label: 'Berlin' },
 ];
 
 const customStyles = {

@@ -1,3 +1,9 @@
+:root {
+  --clr-neon: hsl(317 100% 54%);
+  --clr-bg: hsl(323 21% 16%);
+}
+
+
 .footer-wrap {
   border-top: 10px solid #f8f8f8;
   height: 320px;
@@ -5,12 +11,13 @@
 
 .footer-wrapper {
   display: flex;
-  width: 81%;
+  width: 100%;
   margin: 0 auto;
   justify-content: space-between;
   color: #545454;
   font-size: 13px;
   padding-top: 50px;
+  background: #1a242f;
 }
 
 .footer-wrapper ul {
@@ -23,7 +30,7 @@
   height: 27px;
   text-align: left;
   cursor: pointer;
-  color: #6a6a6a;
+  color: whitesmoke;
 }
 
 .footer-wrapper ul li:hover {
@@ -33,11 +40,19 @@
 .column-one {
   width: 345px;
   text-align: left;
+  margin-left: 2rem;
 }
 
 .column-one img {
   height: 25px;
   width: 150px;
+}
+
+.iconic {
+  font-size: 25px;
+  margin: 10px;
+  cursor: pointer;
+  color: var(--clr-neon);
 }
 
 h3 {

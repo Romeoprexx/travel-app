@@ -7,6 +7,7 @@ import Download from './Download';
 import Media from './Media';
 import Footer from './footer';
 import './Styles/main-home.css';
+import SearchBar from './Searchs';
 
 class MainHome extends Component {
   componentDidMount() {
@@ -14,32 +15,14 @@ class MainHome extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App" id='app'>
         <Header
           backgroundImagesData={backgroundImagesData}
           history={this.props.history}
           navigationData={HeaderNavData}
         />
-        <p id="external">
-          {' '}
-          <span role="img" aria-label="Warn">
-            👷
-          </span>{' '}
-          Currently Building{' '}
-          <span role="img" aria-label="Warn">
-            🛠💪🔧
-          </span>{' '}
-          New York City{' '}
-          <span role="img" aria-label="Warn">
-            🌆
-          </span>{' '}
-          <span role="img" aria-label="Warn">
-            🦇
-          </span>
-        </p>
         <TopCities />
-        <HeadoutPicks pickedData={pickedData} headline={'Headout Picks'} />
-        <Collections collectionsData={collectionsData} />
+        <HeadoutPicks pickedData={pickedData} headline={'Top Recommendations'} />
         <Download />
         <Media />
         <Footer />
@@ -54,7 +37,7 @@ const backgroundImagesData = [
   {
     id: 1,
     url:
-      'https://cdn-imgix-open.headout.com/desktop-flaps/cashback-01.jpg?auto=compress&fm=webp&h=501&crop=faces&fit=min'
+      'https://cdn.dribbble.com/users/3906861/screenshots/10752555/media/50bd24d277784475c9856fcae9332a8c.jpg?compress=1&resize=1200x900&vertical=top'
   },
   {
     id: 2,
@@ -73,7 +56,7 @@ const backgroundImagesData = [
 const HeaderNavData = [
   {
     id: 1,
-    name: 'Headout Picks'
+    name: 'Hotels'
   },
   {
     id: 2,
@@ -81,15 +64,15 @@ const HeaderNavData = [
   },
   {
     id: 3,
-    name: 'Abu Dhabi City Tours'
+    name: 'Tours'
   },
   {
     id: 4,
-    name: 'Amsterdam Attractions'
+    name: 'Attractions'
   },
   {
     id: 5,
-    name: 'Burj Khalifa'
+    name: 'Restaurants'
   }
 ];
 
@@ -98,26 +81,26 @@ const HeaderNavData = [
 const pickedData = [
   {
     id: 1,
-    currentPrice: 29,
+    currentPrice: 35,
     currency: '$',
     stars: 4.6,
-    ratings: 681,
+    ratings: 6831,
     city: 'NEW YORK',
-    description: 'The Phantom of the Opera',
+    description: 'The Central Park',
     url:
-      'https://cdn-imgix.headout.com/tour/652/TOUR-IMAGE/cd0fa708-27c2-4145-9fcf-14e84d910456-517-new-york-phantom-of-the-opera-00.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUhfITNdazc_b-fvsQViOkn4alkFX_N7H8dp6TAaDZdWnpSeVr4QO17B1smrXWRJ4QE7Mrixpp9gVxIpMkqQQxIA'
   },
   {
     id: 2,
-    currentPrice: 57.5,
+    currentPrice: 55.9,
     currency: '$',
     stars: 4.6,
     ratings: 564,
-    cashback: 10,
+    cashback: 20,
     city: 'NEW YORK',
-    description: 'Aladdin',
+    description: 'New York Botanical Garden',
     url:
-      'https://cdn-imgix.headout.com/tour/638/TOUR-IMAGE/d8da7ef3-6be5-4ab9-a88e-66a1cf8b5126-2.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT8izP51WMj4BoP2kxMSvQDOAM8PKniAtw6fT1uo408vbxSrVLMTSNBWUO3WkY931fIVsklwKH0GrnsaYzD4BsLvQ'
   },
   {
     id: 3,
@@ -126,9 +109,9 @@ const pickedData = [
     currency: '$',
     discount: 49,
     city: 'NEW YORK',
-    description: 'King Kong - Broadway Week Discount',
+    description: 'New York Catacombs',
     url:
-      'https://cdn-imgix.headout.com/tour/18201/TOUR-IMAGE/a24bde23-2e32-49d4-bf14-b933fe60fe52-c817b2f3-194d-4fde-9ad8-fccbaf50ed31-9339-new-york-king-kong-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://travel.usnews.com/dims4/USNEWS/a111c10/2147483647/resize/246x164%5E%3E/crop/246x164/quality/85/?url=https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6c/2e/5e.jpg'
   },
   {
     id: 4,
@@ -154,7 +137,7 @@ const pickedData = [
     ratings: 1240,
     cashback: 5,
     city: 'DUBAI',
-    description: 'Dubai Acquarium & Underwater Zoo + Burj Khalifa Combo',
+    description: 'Dubai Acquarium & Underwater Zoo',
     url:
       'https://cdn-imgix.headout.com/tour/3832/TOUR-IMAGE/4306765f-f03f-47a0-a5c5-241ae6cd49f6-2545-dubai-aquarium-underwater-zoo-burj-khalifa-combo-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
   },
@@ -163,12 +146,12 @@ const pickedData = [
     currentPrice: 20,
     currency: '€',
     stars: 4.6,
-    ratings: 437,
+    ratings: 4317,
     city: 'PARIS',
     description:
-      'Palace of Versailles All Access Passport Entry with Audioguide',
+      "Musee D'Orsay",
     url:
-      'https://cdn-imgix.headout.com/tour/13905/TOUR-IMAGE/b23dc05c-1b19-4eb4-a205-fb9f0f2e29ab-7654-paris-Palace-of-Versailles-All-Access-Passport-Entry-with-Audioguide-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRVBMZKKe0TZ40PofD4ZelcMCWNlhdZOHSbzYhNYfuHmekhFeSn2x0LwpUtNkz2qY84-xw9G4l40YlsWh0_fe9fFgIt'
   },
   {
     id: 7,

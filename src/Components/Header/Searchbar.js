@@ -16,8 +16,17 @@ const options = [
   { value: 'Naples', label: 'Naples' },
   { value: 'Budapest', label: 'Budapest' },
   { value: 'Edinburg', label: 'Edinburg' },
-  { value: 'Florence', label: 'Florence' }
+  { value: 'Florence', label: 'Florence' },
+  { value: 'Sydney', label: 'Sydney' },
+  { value: 'Toronto', label: 'Toronto' },
+  { value: 'Bermuda', label: 'Bermuda' },
+  { value: 'Manila', label: 'Manila' },
+  { value: 'Berlin', label: 'Berlin' },
+  
 ];
+
+
+
 
 const customStyles = {
   option: (provided, state) => ({
@@ -49,12 +58,17 @@ const customStyles = {
 
 class Searchbar extends Component {
   state = {
-    selectedOption: null
+    selectedOption: null,
+    options: true
   };
 
   handleChange = selectedOption => {
     this.setState({ selectedOption: selectedOption });
   };
+
+  onClick = options => {
+    this.setState({options: false})
+  }
 
   render() {
     const { selectedOption } = this.state;
@@ -65,14 +79,15 @@ class Searchbar extends Component {
             <Select
               styles={customStyles}
               placeholder="Select City"
-              value={selectedOption}
+              selectedOption={selectedOption}
               onChange={this.handleChange}
               options={options}
+              onClick={options}
             />
           </div>
         </div>
         <div className="select-experience-large" />
-        <button id="go">Let's Go</button>
+        <button onSubmit={this.handleChange} id="go">Explore</button>
       </div>
     );
   }

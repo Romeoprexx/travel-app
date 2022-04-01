@@ -7,10 +7,18 @@ import Media from './Media';
 import Footer from './footer';
 import ExperienceCard from './ExperienceCard';
 import './Styles/new-york.css';
+import {RiVirusFill} from 'react-icons/ri'
+import {GiWorld} from 'react-icons/gi'
+import ReactWeather, { useOpenWeather } from 'react-open-weather';
+import NyWeather from './NyWeather';
+
 
 class NewYork extends Component {
+ 
   componentDidMount() {
     window.scrollTo(0, 0);
+
+   
   }
   render() {
     return (
@@ -21,11 +29,30 @@ class NewYork extends Component {
           selectedCity={'New York'}
           navigationData={NewYorkNavigationData}
         />
-        <TopPicks
+        <div className='news'>
+          <div className='newsWrapper'>
+            <h3 className='headline text-center'>Travel News</h3>
+            <div className='covid'>
+               <span className='virus'><RiVirusFill className='fill'/> Covid-19</span>
+            </div>
+            <div className='covidMsg'>
+              <h3 className='travel'>Travel restricted to this destination</h3>
+              <p className='writeTravel'>Proof of COVID-19 vaccination and negative test required before departure</p>
+              <button className='btn'><span><GiWorld className='filler' /></span>
+                <span className='shift'>cdc.gov</span>
+              </button>
+            </div>
+          </div>
+          <div className='weather'>
+              <NyWeather />
+          </div>
+        </div>
+
+        <TopPicks className="tops" id="top"
           headline={'Top Experiences in New York'}
           pickedData={NewYorkData}
         />
-        <Collections collectionsData={collectionsData} />
+        
         {AllNewYorkCityData &&
           AllNewYorkCityData.map(
             ({ id, headline, description, sectionData }) => (
@@ -133,7 +160,7 @@ const backgroundImagesData = [
   {
     id: 3,
     url:
-      'https://cdn-imgix-open.headout.com/desktop-flaps/cashback-01.jpg?auto=compress&fm=webp&h=501&crop=faces&fit=min'
+      'https://imageio.forbes.com/specials-images/imageserve/60008cc19224015fc829c017/The-Vessel-at-Hudson-Yards-in-New-York-City/1960x0.jpg?fit=bounds&format=jpg&width=960'
   },
   {
     id: 4,
@@ -295,128 +322,12 @@ const AllNewYorkCityData = [
       }
     ]
   },
-  {
-    id: 2,
-    headline: 'City Walks',
-    description:
-      'Discover what makes New York one of the most visited places in the world with these stunning NYC sightseeing tours. You will not only get to visit these popular landmarks, but also learn about the history and get to hear stories about the city’s past as well.',
-    sectionData: [
-      {
-        id: 1,
-        currentPrice: 45,
-        currency: '$',
-        stars: null,
-        ratings: null,
-        cashback: null,
-        about: 'CITY WALKS',
-        description: 'New York TV and Movie Sites Tour',
-        url:
-          'https://cdn-imgix.headout.com/tour/961/image/0.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 2,
-        currentPrice: 53.65,
-        lastPrice: 62,
-        currency: '$',
-        stars: 4.1,
-        ratings: 1781,
-        cashback: null,
-        discount: 13,
-        description: 'Sopranos Tour',
-        about: `CITY WALKS`,
-        url:
-          'https://cdn-imgix.headout.com/tour/960/TOUR-IMAGE/6fcfdbcd-2b0d-4df7-9da0-6e14304479a6-737-new-york-sopranos-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 3,
-        currentPrice: 49.14,
-        lastPrice: 56,
-        currency: '$',
-        stars: 4.9,
-        ratings: 18,
-        cashback: null,
-        discount: 12,
-        about: 'CITY WALKS',
-        description: `King Kong - Broadway Week Discount`,
-        url:
-          'https://cdn-imgix.headout.com/tour/954/image/3.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 4,
-        currentPrice: 50,
-        lastPrice: null,
-        currency: '$',
-        stars: null,
-        ratings: null,
-        cashback: null,
-        about: 'CITY WALKS',
-        description: `Holiday Lights and Movie Sights`,
-        url:
-          'https://cdn-imgix.headout.com/tour/959/TOUR-IMAGE/0c5840a5-f807-4259-992e-db584df6519e-736-new-york-holiday-lights-and-movie-sites-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 5,
-        currentPrice: 28,
-        lastPrice: 35,
-        currency: '$',
-        stars: 4.8,
-        ratings: 270,
-        cashback: null,
-        discount: 20,
-        about: 'ARCHITECTURE',
-        description: `NYC Street Art Tour`,
-        url:
-          'https://cdn-imgix.headout.com/tour/17177/TOUR-IMAGE/90d6573a-e021-4f15-b2c4-2dc4d674cb8a-9460-new-york-nyc-street-art-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 6,
-        currentPrice: 33.75,
-        lastPrice: 45,
-        currency: '$',
-        stars: 4.5,
-        ratings: 330,
-        cashback: null,
-        discount: 25,
-        about: 'CITY WALKS',
-        description: `Sunrise Yoga Walk`,
-        url:
-          'https://cdn-imgix.headout.com/tour/17189/TOUR-IMAGE/a8ce2e14-2a95-44a4-b150-223be1f156bb-9472-new-york-sunrise-yoga-walk-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 7,
-        currentPrice: 18,
-        lastPrice: 21.77,
-        currency: '$',
-        stars: null,
-        ratings: null,
-        cashback: null,
-        discount: 17,
-        about: 'CITY WALKS',
-        description: `NYC Road Bike Rental`,
-        url:
-          'https://cdn-imgix.headout.com/tour/3986/image/nycroadbikerental-01edited.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 8,
-        showMore: true,
-        currentPrice: null,
-        lastPrice: null,
-        currency: null,
-        stars: null,
-        ratings: null,
-        cashback: null,
-        discount: null,
-        about: null,
-        description: null,
-        url: null
-      }
-    ]
-  },
+  
   {
     id: 3,
     headline: 'Food and Drinks',
     description:
-      'Get a taste of New York’s truly global culture with these delicious food tours of New York. Whether you’re looking for the best New York pizza or fancy the best craft beer from the east coast, these food and culinary tours of New York will be perfect for you.',
+      'Get a taste of New York’s truly global culture with these delicious food tours of New York. Whether you’re looking for the best New York local cuisine or fancy the best craft beer from the east coast, we have got the perfect tours for you.',
     sectionData: [
       {
         id: 1,
@@ -426,11 +337,11 @@ const AllNewYorkCityData = [
         stars: null,
         ratings: null,
         cashback: null,
-        discount: 12,
+        discount: 15,
         about: 'FOOD AND DRINKS',
         description: 'Tenements, Tales & Tastes',
         url:
-          'https://cdn-imgix.headout.com/tour/4280/TOUR-IMAGE/ec8f7c1c-a3e9-4edb-b252-c85e55c05e2b-2767-new-york-tenements?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://cdn.theculturetrip.com/wp-content/uploads/2021/04/afkxxa.jpg'
       },
       {
         id: 2,
@@ -441,9 +352,9 @@ const AllNewYorkCityData = [
         ratings: null,
         cashback: null,
         about: 'FOOD AND DRINKS',
-        description: `The Great Food Tour of New York`,
+        description: `Food Cart Walking Tour`,
         url:
-          'https://cdn-imgix.headout.com/tour/692/image/tourlandish--28.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/75/36/e7.jpg'
       },
       {
         id: 3,
@@ -453,11 +364,11 @@ const AllNewYorkCityData = [
         stars: null,
         ratings: null,
         cashback: null,
-        discount: 12,
+        discount: 25,
         about: 'FOOD AND DRINKS',
-        description: `Brownstone Brooklyn Eats`,
+        description: `Little Italy`,
         url:
-          'https://cdn-imgix.headout.com/tour/4278/image/2151606-origedit.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://media.timeout.com/images/105702615/image.jpg'
       },
       {
         id: 4,
@@ -466,11 +377,11 @@ const AllNewYorkCityData = [
         currency: '$',
         stars: null,
         ratings: null,
-        cashback: 10,
+        cashback: 40,
         about: 'FOOD AND DRINKS',
         description: `The Original Brooklyn Pizza`,
         url:
-          'https://cdn-imgix.headout.com/tour/2873/image/1997-new-york-the-original-brooklyn-pizza-tour-03.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/74/15/97.jpg'
       },
       {
         id: 5,
@@ -495,9 +406,9 @@ const AllNewYorkCityData = [
         cashback: null,
         discount: 12,
         about: 'FOOD AND DRINKS',
-        description: `NY Craft Cocktail Tour`,
+        description: `NY Craft Beer Tour`,
         url:
-          'https://cdn-imgix.headout.com/tour/4281/TOUR-IMAGE/0e29c9d4-bda2-42f7-9a53-410f94233f19-2768-new-york-ny-craft-cocktail-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,g_xy_center,h_391,q_75,w_588,x_350,y_172/v1/clients/newyorkstate/340b6d4f_c26d_4b54_b2d7_f9e7a1a96499_6ebfb5a2-2be2-4c80-b121-ae4a3d388392.jpg'
       },
       {
         id: 7,
@@ -505,12 +416,12 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 5.0,
-        ratings: 1,
+        ratings: 88500,
         cashback: null,
-        about: 'NEW YORK CITY WALKING TOURS',
-        description: 'Chelsea Market Food and Culture Walking Tour',
+        about: 'FOOD AND DRINKS',
+        description: 'NY Soho Restaurant',
         url:
-          'https://cdn-imgix.headout.com/tour/2906/TOUR-IMAGE/4414a92f-1570-4b10-b05d-deaa5737d7f8-2005-ChelseaFoodTour-1-2-.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://media.timeout.com/images/105289912/750/422/image.jpg'
       },
       {
         id: 8,
@@ -532,7 +443,7 @@ const AllNewYorkCityData = [
     id: 4,
     headline: 'NYC Tours',
     description:
-      'With a range of tours catering to different parts of the city, you get the chance to see some of the major attractions. Check out our list of New York Bus Tours to know more.',
+      'With a range of tours catering to different parts of the city, you get the chance to see some of the major attractions. Check out our list of New York Tours to know more.',
     sectionData: [
       {
         id: 1,
@@ -540,7 +451,7 @@ const AllNewYorkCityData = [
         lastPrice: 35,
         currency: '$',
         stars: 5.0,
-        ratings: 3,
+        ratings: 30900,
         cashback: null,
         discount: 5,
         about: 'NYC TOURS',
@@ -561,7 +472,7 @@ const AllNewYorkCityData = [
         about: 'NEW YORK EXPLORER PASS',
         description: 'New York Explorer Pass - 3 Attractions',
         url:
-          'https://cdn-imgix.headout.com/tour/2477/TOUR-IMAGE/1f7514ef-73b3-4a51-8510-3e5ba6528318-1739-new-york-nyc-explorer-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://magazine.northeast.aaa.com/wp-content/uploads/2018/04/top-10-nyc-tours-1.jpg'
       },
       {
         id: 3,
@@ -584,11 +495,11 @@ const AllNewYorkCityData = [
         currency: '$',
         stars: null,
         ratings: null,
-        discount: 5,
+        discount: 15,
         about: 'NYC TOURS',
         description: `The Downtown Experience - The Ride`,
         url:
-          'https://cdn-imgix.headout.com/tour/14354/TOUR-IMAGE/bbe86169-096f-48a4-97e8-4c2262340874-7836-new-york-the-downtown-experience---the-ride-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://res.klook.com/image/upload/v1644564525/blog/twjrokr8a3szvtujnwcw.jpg'
       },
       {
         id: 5,
@@ -596,13 +507,13 @@ const AllNewYorkCityData = [
         lastPrice: 38,
         currency: '$',
         stars: 4.4,
-        ratings: 61,
+        ratings: 68901,
         cashback: 10,
         discount: 7,
         about: 'ONE WORLD OBSERVATORY',
-        description: `One World Observatory Priority Entrance Tickets`,
+        description: `One World Observatory Entrance Tickets`,
         url:
-          'https://cdn-imgix.headout.com/tour/5568/TOUR-IMAGE/185a0227-2f26-4fb5-bd06-dfa5fede78a8-ny-attractions-one-world-observatory-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://realnewyorktours.com/wp-content/uploads/2019/12/RealNewYorkTours_WalkingTourofLowerManhattan_MainImage-3-605x465.jpg'
       },
       {
         id: 6,
@@ -610,7 +521,7 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.8,
-        ratings: 986,
+        ratings: 98906,
         cashback: null,
         discount: null,
         highlight: `SAVE UP TO $103`,
@@ -625,7 +536,7 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.8,
-        ratings: 761,
+        ratings: 88761,
         cashback: 5,
         discount: null,
         about: 'The SIGHTSEEING PASS',
@@ -650,153 +561,10 @@ const AllNewYorkCityData = [
     ]
   },
   {
-    id: 5,
-    headline: 'Entertainment',
-    description:
-      'Check out some of the hottest events happening in and around New York City. From tickets for a Knicks game at Madison Square Garden to a beautiful Broadway experience, these are some of the best events happening in New York at the moment.',
-    sectionData: [
-      {
-        id: 1,
-        currentPrice: 49.14,
-        lastPrice: 56,
-        currency: '$',
-        stars: 4.9,
-        ratings: 18,
-        cashback: null,
-        discount: 12,
-        about: 'CITY WALKS',
-        description: 'Sex and the City Tour',
-        url:
-          'https://cdn-imgix.headout.com/tour/954/image/3.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 2,
-        currentPrice: 49.14,
-        lastPrice: 56,
-        currency: '$',
-        stars: null,
-        ratings: null,
-        cashback: null,
-        discount: 12,
-        about: 'CITY WALKS',
-        description: `Gossip Girl Sites Tour`,
-        url:
-          'https://cdn-imgix.headout.com/tour/721/image/GossipGirls.PCP.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      }
-    ]
-  },
-  {
-    id: 6,
-    headline: 'New York City Passes',
-    description:
-      'Explore New York in a flexible and cost-effective manner with these city passes! Choose the New York Pass for unlimited access to attractions during a set number of days. For those who want to visit a set number of attractions, we recommend the New York Explorer Pass, which lets you pick the number of attractions to visit and then explore at your own pace and convenience!',
-    sectionData: [
-      {
-        id: 1,
-        currentPrice: 86,
-        lastPrice: 89,
-        currency: '$',
-        stars: 4.9,
-        ratings: 1587,
-        cashback: null,
-        highlight: `SAVE UP To 50%`,
-        about: 'NEW YORK EXPLORER PASS',
-        description: 'New York Explorer Pass - 3 Attractions',
-        url:
-          'https://cdn-imgix.headout.com/tour/2477/TOUR-IMAGE/1f7514ef-73b3-4a51-8510-3e5ba6528318-1739-new-york-nyc-explorer-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 2,
-        currentPrice: 119,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.9,
-        ratings: 828,
-        cashback: null,
-        highlight: `BEST SELLER`,
-        about: 'NEW YORK EXPLORER PASS',
-        description: `New York Explorer Pass - 4 Attractions`,
-        url:
-          'https://cdn-imgix.headout.com/tour/17250/TOUR-IMAGE/d8b181dc-7748-4329-a6b8-0a6911fd19f9-9513-new-york-4-attraction-new-york-explorer-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 3,
-        currentPrice: 134,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.9,
-        ratings: 809,
-        cashback: null,
-        highlight: `VALUE FOR MONEY`,
-        discount: null,
-        about: 'NEW YORK EXPLORER PASS',
-        description: `New York Explorer Pass - 5 Attractions`,
-        url:
-          'https://cdn-imgix.headout.com/tour/17251/TOUR-IMAGE/d1cc2347-b395-4026-b6eb-d455261453d5-9514-new-york-5-attraction-new-york-explorer-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 4,
-        currentPrice: 124,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.8,
-        ratings: 986,
-        cashback: null,
-        about: 'NEW YORK PASS',
-        description: `New York Unlimited Attraction Pass - 1 Day`,
-        url:
-          'https://cdn-imgix.headout.com/tour/1816/TOUR-IMAGE/5d6da19b-0a01-4609-8fc2-6919972d9dcd-1294-new-york-1-day-new-york-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 5,
-        currentPrice: 189,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.9,
-        ratings: 588,
-        cashback: null,
-        highlight: `SAVE UP TO $10`,
-        about: 'NEW YORK PASS',
-        description: `New York Unlimited Attraction Pass - 2 Days`,
-        url:
-          'https://cdn-imgix.headout.com/tour/17275/TOUR-IMAGE/fd9e371e-303c-4a34-a695-ef2089b54c0e-9534-new-york-2-day-new-york-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 6,
-        currentPrice: 159,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.8,
-        ratings: 881,
-        cashback: null,
-        highlight: `MUST VISIT`,
-        discount: null,
-        about: 'The SIGHTSEEING PASS',
-        description: `FreeStyle Attraction Pass with Hop-On Hop-Off Bus and Cruise`,
-        url:
-          'https://cdn-imgix.headout.com/tour/3534/TOUR-IMAGE/fc281323-cedc-4d4d-b931-eff48a0c03d6-2360-new-york-freestyle-new-york-city-pass--attractions---hop-on-hop-off-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      },
-      {
-        id: 7,
-        currentPrice: 69,
-        lastPrice: null,
-        currency: '$',
-        stars: 4.8,
-        ratings: 761,
-        cashback: 5,
-        discount: null,
-        about: 'The SIGHTSEEING PASS',
-        description: `FreeStyle Attraction Pass with Hop-On Hop-Off Cruise`,
-        url:
-          'https://cdn-imgix.headout.com/tour/16543/TOUR-IMAGE/4a07f498-91fd-4bad-b329-8d0a0efda2be-9173-new-york-freestyle--cruise-pass-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
-      }
-    ]
-  },
-  {
     id: 7,
-    headline: 'NYC 101',
+    headline: 'NYC Museums and Hotels',
     description:
-      'From museums that offer knowledge about art and history to high rise buildngs and structures, New York attractions have it all. Have a look at these products to know more.',
+      'From museums that offer knowledge about art and history to five stars hotels, New York attractions have it all. Have a look at these to know more.',
     sectionData: [
       {
         id: 1,
@@ -804,12 +572,12 @@ const AllNewYorkCityData = [
         lastPrice: 39.2,
         currency: '$',
         stars: 4.9,
-        ratings: 533,
+        ratings: 99533,
         cashback: 10,
-        about: 'TOP OF THE ROCK',
-        description: 'Top of the Rock Observation Deck: Flexible Date Tickets',
+        about: 'HOTELs',
+        description: 'ST Regis',
         url:
-          'https://cdn-imgix.headout.com/tour/751/TOUR-IMAGE/5a1a9e72-a128-4912-90d5-b2c78e83ee42-ny-attractions-top-of-the-rock-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2020/12/THE-ST-REGIS-NEW-YORK.jpg?ssl=1'
       },
       {
         id: 2,
@@ -817,7 +585,7 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.9,
-        ratings: 311,
+        ratings: 87311,
         cashback: null,
         discount: 20,
         highlight: `NEW ARRIVAL`,
@@ -832,7 +600,7 @@ const AllNewYorkCityData = [
         lastPrice: 23,
         currency: '$',
         stars: 5.0,
-        ratings: 331,
+        ratings: 67331,
         cashback: null,
         discount: 6,
         about: 'MUSEUMS',
@@ -846,7 +614,7 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.8,
-        ratings: 448,
+        ratings: 34448,
         cashback: null,
         about: 'MUESUMS',
         highlight: `BEST SELLER`,
@@ -860,13 +628,13 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.8,
-        ratings: 660,
+        ratings: 90660,
         cashback: null,
         about: 'MEUSEUMS',
         highlight: `BEST SELLER`,
         description: `9/11 Memorial & Meuseum Admission: Skip the Ticket Line`,
         url:
-          'https://cdn-imgix.headout.com/tour/679/TOUR-IMAGE/73bed395-11c9-4fb8-85a5-5231279d4706-549-new-york-911-memorial-museum-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://lh3.googleusercontent.com/p/AF1QipOlByNnE1pzlzrjJ0zLQDR_lpSwVxwzeY5XYFkx=w296-h202-n-k-rw-no-v2'
       },
       {
         id: 6,
@@ -874,13 +642,13 @@ const AllNewYorkCityData = [
         lastPrice: null,
         currency: '$',
         stars: 4.9,
-        ratings: 752,
+        ratings: 79052,
         cashback: 10,
         discount: null,
-        about: 'EMPIRE STATE BUILDING',
-        description: `Empire State Building Observatory Tickets`,
+        about: 'HOTELS',
+        description: `Executive Hotel Le Soleil`,
         url:
-          'https://cdn-imgix.headout.com/tour/724/TOUR-IMAGE/42c90752-9142-4e81-97ea-f86bba64081b-593-new-york-skip-the-line-empire-state-building-observatory-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://www.executivehotels.net/new-york-luxury-hotel/images/main-banner.jpg'
       },
       {
         id: 7,
@@ -888,13 +656,13 @@ const AllNewYorkCityData = [
         lastPrice: 38,
         currency: '$',
         stars: 5.0,
-        ratings: 400,
+        ratings: 47600,
         cashback: null,
         discount: 18,
-        about: 'MEUSEUMS',
-        description: `Madame Tussauds New York with VIP Fast Track Access`,
+        about: 'HOTELS',
+        description: `Roquois`,
         url:
-          'https://cdn-imgix.headout.com/tour/1279/TOUR-IMAGE/4ff22af8-2b2a-40a1-92aa-a0b74c1aad95-901-new-york-madame-tussauds-new-york--skip-the-line-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+          'https://media.timeout.com/images/103587500/750/562/image.jpg'
       },
       {
         id: 8,
@@ -919,11 +687,11 @@ const AllNewYorkCityData = [
 const NewYorkData = [
   {
     id: 1,
-    currentPrice: 62.5,
+    currentPrice: 65.5,
     currency: '$',
     stars: 4.6,
-    ratings: 564,
-    cashback: 10,
+    ratings: 10564,
+    cashback: 20,
     about: 'BROADWAY MUSICALS',
     description: 'Aladdin',
     url:
@@ -931,15 +699,15 @@ const NewYorkData = [
   },
   {
     id: 2,
-    currentPrice: 37,
+    currentPrice: 35,
     lastPrice: 39.2,
     currency: '$',
     stars: 4.9,
-    ratings: 533,
-    cashback: 10,
+    ratings: 8533,
+    cashback: 30,
     discount: 5,
     about: 'TOP OF THE ROCK',
-    description: 'Top of the Rock Observation Deck: Flexible Date Tickets',
+    description: 'Top of the Rock Observation Deck',
     url:
       'https://cdn-imgix.headout.com/tour/751/TOUR-IMAGE/5a1a9e72-a128-4912-90d5-b2c78e83ee42-ny-attractions-top-of-the-rock-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
   },
@@ -949,13 +717,13 @@ const NewYorkData = [
     lastPrice: 186,
     currency: '$',
     stars: 4.9,
-    ratings: 531,
+    ratings: 9531,
     cashback: null,
     discount: 20,
     about: 'PHOTOSHOOTS AND TOURS',
     description: 'Best of New York Tours',
     url:
-      'https://cdn-imgix.headout.com/tour/17185/TOUR-IMAGE/40bd85b6-fd85-4957-8012-94abad360c5f-9468-new-york-best-of-ny-tours-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://assets3.thrillist.com/v1/image/2680204/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70'
   },
   {
     id: 4,
@@ -963,13 +731,13 @@ const NewYorkData = [
     lastPrice: 35,
     currency: '$',
     stars: 4.8,
-    ratings: 270,
+    ratings: 7270,
     cashback: null,
     discount: 20,
-    about: 'ARCHITECTURE',
+    about: 'PAINTING',
     description: 'NYC Street Art Tour',
     url:
-      'https://cdn-imgix.headout.com/tour/17177/TOUR-IMAGE/90d6573a-e021-4f15-b2c4-2dc4d674cb8a-9460-new-york-nyc-street-art-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://media.istockphoto.com/photos/hipster-male-walking-next-to-wall-of-graffiti-in-brooklyn-picture-id477339612?k=20&m=477339612&s=612x612&w=0&h=_E38XyTkK2ftv5YohnBWO-0XVk1nB1ppcqzb5cmWrhQ='
   },
   {
     id: 5,
@@ -993,11 +761,11 @@ const NewYorkData = [
     stars: 4.9,
     ratings: 18,
     cashback: null,
-    discount: 12,
+    discount: 20,
     about: 'CITY WALKS',
-    description: 'Sex and the City Tour',
+    description: 'Walk and the City Tour',
     url:
-      'https://cdn-imgix.headout.com/tour/954/image/3.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F10%2Fbrooklyn-bridge-WALKNYC0919.jpg'
   },
   {
     id: 7,
@@ -1005,7 +773,7 @@ const NewYorkData = [
     lastPrice: null,
     currency: '$',
     stars: 5.0,
-    ratings: 1,
+    ratings: 1189,
     cashback: null,
     about: 'NEW YORK CITY WALKING TOURS',
     description: 'Chelsea Market Food and Culture Walking Tour',
@@ -1018,13 +786,13 @@ const NewYorkData = [
     lastPrice: 360,
     currency: '$',
     stars: 4.7,
-    ratings: 268,
+    ratings: 4268,
     cashback: null,
     about: 'ARCHITECTURE',
     discount: 20,
     description: 'Architecture of New York Tour',
     url:
-      'https://cdn-imgix.headout.com/tour/6755/TOUR-IMAGE/132dfbb2-b633-4f8d-a874-d55431e70f6f-4277-new-york-architecture-of-new-york-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://lafamilytravel.com/wp-content/uploads/2018/12/kazuend-40019-unsplash-1080x675.jpg'
   },
   {
     id: 9,
@@ -1032,13 +800,13 @@ const NewYorkData = [
     lastPrice: 85,
     currency: '$',
     stars: 5.0,
-    ratings: 279,
+    ratings: 2979,
     cashback: null,
     discount: 20,
     about: 'CRUISES',
     description: 'New York City Sightseeing Boat Tour',
     url:
-      'https://cdn-imgix.headout.com/tour/17191/TOUR-IMAGE/d30695cf-8ed4-4b51-be01-13066b0827ef-9474-new-york-new-york-city-sightseeing-boat-tour-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://media.timeout.com/images/103232470/image.jpg'
   },
   {
     id: 10,
@@ -1046,13 +814,13 @@ const NewYorkData = [
     lastPrice: 45,
     currency: '$',
     stars: 4.5,
-    ratings: 330,
+    ratings: 3830,
     cashback: null,
     discount: 25,
-    about: 'CITY WALKS',
-    description: 'Sunrise Yoga Walk',
+    about: 'FUN',
+    description: 'Sunrise Yoga',
     url:
-      'https://cdn-imgix.headout.com/tour/17189/TOUR-IMAGE/a8ce2e14-2a95-44a4-b150-223be1f156bb-9472-new-york-sunrise-yoga-walk-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://ladyboss.asia/wp-content/uploads/2016/09/10-simple-yoga-poses-1170x658.jpg'
   },
   {
     id: 11,
@@ -1060,13 +828,13 @@ const NewYorkData = [
     lastPrice: 30,
     currency: '$',
     stars: 4.8,
-    ratings: 663,
+    ratings: 16663,
     cashback: null,
-    discount: 20,
+    discount: 50,
     about: 'AFTER HOURS',
     description: 'NYFW Fashion Street Show',
     url:
-      'https://cdn-imgix.headout.com/tour/17180/TOUR-IMAGE/4e9e7963-5e55-46a5-9a85-53532c20e747-9463-new-york-nyfw-fashion-street-show-01.jpg?auto=compress&fm=webp&w=510&h=315&crop=faces&fit=min'
+      'https://graziamagazine.com/wp-content/uploads/2021/09/GettyImages-1342139003-Cropped.jpg?fit=4298%2C2417'
   },
   {
     id: 12,

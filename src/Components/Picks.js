@@ -12,7 +12,7 @@ class TopPicks extends Component {
     const { pickedData } = this.props;
     return (
       <div>
-        <div className="headout-picks-wrapper">
+        <div className="headout-picks-wrapper" id='picks'>
           <div className="headout-picks-nav">
             <div>
               <h1>{this.props.headline}</h1>
